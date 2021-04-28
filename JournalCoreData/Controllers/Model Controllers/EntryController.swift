@@ -37,6 +37,9 @@ class EntryController {
         CoreDataStack.saveContext()
     }
     
-    func deleteEntry(title: Entry, body: Entry) {
+    func deleteEntry(with entry: Entry) {
+        guard let index = entries.firstIndex(of: entry) else {return}
+        entries.remove(at: index)
+        CoreDataStack.context.delete(entry)
     }
 }//End of class
